@@ -1,0 +1,103 @@
+
+
+
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Instagram, Mail, Video } from "lucide-react";
+
+export default function ESPageWebsite() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white text-gray-800">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center text-center px-6 py-20">
+        <motion.img
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          src="https://via.placeholder.com/150"
+          alt="Profile"
+          className="w-36 h-36 rounded-full shadow-xl mb-6"
+        />
+
+        <motion.h1
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-4xl font-bold"
+        >
+          ES Courtside
+        </motion.h1>
+
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-4 max-w-xl text-lg text-gray-600"
+        >
+          Your daily source of basketball highlights, analysis, and game updates. Stay updated and never miss the action.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mt-6 flex gap-4"
+        >
+          <Button className="rounded-2xl px-6">
+            <Video className="mr-2 h-4 w-4" /> Follow on TikTok
+          </Button>
+          <Button variant="outline" className="rounded-2xl px-6">
+            <Instagram className="mr-2 h-4 w-4" /> Instagram
+          </Button>
+        </motion.div>
+      </section>
+
+      {/* Content Section */}
+      <section className="px-6 py-16 max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        {[1, 2, 3].map((item) => (
+          <motion.div
+            key={item}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: item * 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition">
+              <CardContent className="p-6">
+                <img
+                  src="https://via.placeholder.com/400x250"
+                  alt="Content Preview"
+                  className="rounded-xl mb-4"
+                />
+                <h3 className="text-xl font-semibold mb-2">
+                  Featured Highlight {item}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Catch the latest basketball highlights and breakdowns from recent games.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* Contact Section */}
+      <section className="bg-blue-600 text-white text-center py-12 px-6">
+        <h2 className="text-2xl font-semibold mb-4">Work With Me</h2>
+        <p className="mb-6">For collaborations, sponsorships, and partnerships.</p>
+        <Button className="bg-white text-blue-600 rounded-2xl px-6">
+          <Mail className="mr-2 h-4 w-4" /> Contact Me
+        </Button>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center py-6 text-gray-500 text-sm">
+        © {new Date().getFullYear()} ES Courtside. All rights reserved.
+      </footer>
+    </div>
+  );
+}
+
+
